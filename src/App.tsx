@@ -7,11 +7,13 @@ const App = () => {
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [query, setQuery] = useState("spiderman");
 
+  const language = "en";
+
   const getMovies = async () => {
     try {
       const response = await themoviedb.get(`/movie?`, {
         params: {
-          language: "en-us",
+          language,
           query,
           api_key: process.env.REACT_APP_API_KEY,
         },
@@ -33,9 +35,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">Movie Search</header>
+      <header className="App-header">
+        <h1>Movie Search</h1>
+      </header>
       <Search query={query} onChange={handleQueryChange} />
-      <ListMovies movies={movies} />
+      <ListMovies movies={movies} language={language} />
     </div>
   );
 };
