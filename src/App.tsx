@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import themoviedb from "./api/themoviedb";
+import action from "./action/themoviedb";
 import { ListMovies, MovieProps } from "./components/movie/movie";
 import { Search } from "./components/search/search";
 
@@ -11,15 +11,13 @@ const App = () => {
 
   const getMovies = async () => {
     try {
-      const response = await themoviedb.get(`/movie?`, {
-        params: {
-          language,
-          query,
-          api_key: process.env.REACT_APP_API_KEY,
-        },
-      });
+      const response = await action.getMovies(query);
 
-      setMovies(response.data.results);
+      if (!response) {
+        return;
+      }
+
+      setMovies(response.results);
     } catch (error) {
       console.log(error);
     }
