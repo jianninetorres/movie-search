@@ -30,6 +30,10 @@ const App = () => {
   };
 
   useEffect(() => {
+    if (!query) {
+      return;
+    }
+
     getMovies();
   }, [query]);
 
