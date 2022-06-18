@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import themoviedb from "./api/themoviedb";
+import { ListMovies, MovieProps } from "./components/movie/movie";
 
-function App() {
+const App = () => {
+  const [movies, setMovies] = useState<MovieProps[]>([]);
+  const [query] = useState("spiderman");
+
+  const getMovies = async () => {
+    try {
+      const response = await themoviedb.get(`/movie?`, {
+        params: {
+          language: "en-us",
+          query,
+          api_key: process.env.REACT_APP_API_KEY,
+        },
+      });
+
+      setMovies(response.data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  // const ListMovies = (movies: MovieProps[]): JSX.Element => {
+  //   const list = movies.map((movie) => {
+  //     return <li key={movie.id}>{movie.title}</li>;
+  //   });
+
+  //   return <ul>{list}</ul>;
+  // };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header">Movie Search</header>
+      <ListMovies movies={movies} />
     </div>
   );
-}
+};
 
 export default App;
