@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import themoviedb from "./api/themoviedb";
 import { ListMovies, MovieProps } from "./components/movie/movie";
+import { Search } from "./components/search/search";
 
 const App = () => {
   const [movies, setMovies] = useState<MovieProps[]>([]);
-  const [query] = useState("spiderman");
+  const [query, setQuery] = useState("spiderman");
 
   const getMovies = async () => {
     try {
@@ -22,21 +23,18 @@ const App = () => {
     }
   };
 
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
+
   useEffect(() => {
     getMovies();
-  }, []);
-
-  // const ListMovies = (movies: MovieProps[]): JSX.Element => {
-  //   const list = movies.map((movie) => {
-  //     return <li key={movie.id}>{movie.title}</li>;
-  //   });
-
-  //   return <ul>{list}</ul>;
-  // };
+  }, [query]);
 
   return (
     <div className="App">
       <header className="App-header">Movie Search</header>
+      <Search query={query} onChange={handleQueryChange} />
       <ListMovies movies={movies} />
     </div>
   );
