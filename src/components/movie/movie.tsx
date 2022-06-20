@@ -87,7 +87,9 @@ export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
                   </Text>
                 }
               />
-              <Text size="sm">User score</Text>
+              <Text size="sm" weight={700}>
+                User score
+              </Text>
             </Center>
           </Box>
 
