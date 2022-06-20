@@ -1,4 +1,5 @@
-import { SimpleGrid } from "@mantine/core";
+import { Card, Image, SimpleGrid } from "@mantine/core";
+import defaultImage from "../../assets/themoviedb.jpeg";
 
 export interface MovieProps {
   adult: boolean;
@@ -25,14 +26,26 @@ export interface Movies {
 export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
   const list = movies.map((movie) => {
     return (
-      <div key={movie.id}>
+      <Card key={movie.id} shadow="sm" p="lg">
+        <Card.Section>
+          <Image
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/w200${movie.backdrop_path}`
+                : defaultImage
+            }
+            height={160}
+            alt={movie.title}
+          />
+        </Card.Section>
+
         <h2>{movie.title}</h2>
         {movie.original_language !== language && (
           <h3>Original title: {movie.original_title}</h3>
         )}
-        <p>({movie.release_date})</p>
+        {movie.release_date && <p>{movie.release_date}</p>}
         <p>{movie.overview}</p>
-      </div>
+      </Card>
     );
   });
 
