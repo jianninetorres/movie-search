@@ -60,7 +60,6 @@ export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
                 ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
                 : defaultImage
             }
-            height={160}
             alt={movie.title}
           />
         </Card.Section>
