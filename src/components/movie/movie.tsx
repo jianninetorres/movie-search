@@ -1,3 +1,5 @@
+import { SimpleGrid } from "@mantine/core";
+
 export interface MovieProps {
   adult: boolean;
   backdrop_path: string;
@@ -34,5 +36,19 @@ export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
     );
   });
 
-  return <ul>{list}</ul>;
+  return (
+    <ul>
+      <SimpleGrid
+        cols={4}
+        spacing="lg"
+        breakpoints={[
+          { maxWidth: 980, cols: 3, spacing: "md" },
+          { maxWidth: 755, cols: 2, spacing: "sm" },
+          { maxWidth: 600, cols: 1, spacing: "sm" },
+        ]}
+      >
+        {list}
+      </SimpleGrid>
+    </ul>
+  );
 };
