@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import action from "./action/themoviedb";
 import { ListMovies, MovieProps } from "./components/movie/movie";
 import { Search } from "./components/search/search";
+import { Container } from "@mantine/core";
 
 const App = () => {
   const [movies, setMovies] = useState<MovieProps[]>([]);
@@ -36,13 +37,15 @@ const App = () => {
   }, [query]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Movie Search</h1>
-      </header>
-      <Search query={query} onChange={handleQueryChange} />
-      <ListMovies movies={movies} language={language} />
-    </div>
+    <Container>
+      <div className="App">
+        <header className="App-header">
+          <h1>Movie Search</h1>
+        </header>
+        <Search query={query} onChange={handleQueryChange} />
+        <ListMovies movies={movies} language={language} />
+      </div>
+    </Container>
   );
 };
 

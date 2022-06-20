@@ -25,30 +25,28 @@ export interface Movies {
 export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
   const list = movies.map((movie) => {
     return (
-      <li key={movie.id}>
+      <div key={movie.id}>
         <h2>{movie.title}</h2>
         {movie.original_language !== language && (
           <h3>Original title: {movie.original_title}</h3>
         )}
         <p>({movie.release_date})</p>
         <p>{movie.overview}</p>
-      </li>
+      </div>
     );
   });
 
   return (
-    <ul>
-      <SimpleGrid
-        cols={4}
-        spacing="lg"
-        breakpoints={[
-          { maxWidth: 980, cols: 3, spacing: "md" },
-          { maxWidth: 755, cols: 2, spacing: "sm" },
-          { maxWidth: 600, cols: 1, spacing: "sm" },
-        ]}
-      >
-        {list}
-      </SimpleGrid>
-    </ul>
+    <SimpleGrid
+      cols={3}
+      spacing="lg"
+      breakpoints={[
+        { maxWidth: 980, cols: 3, spacing: "md" },
+        { maxWidth: 755, cols: 2, spacing: "sm" },
+        { maxWidth: 600, cols: 1, spacing: "sm" },
+      ]}
+    >
+      {list}
+    </SimpleGrid>
   );
 };
