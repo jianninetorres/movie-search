@@ -37,7 +37,12 @@ const App = () => {
     }
 
     getMovies(currentPage);
-  }, [query, currentPage]);
+  }, [currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    getMovies(currentPage);
+  }, [query]);
 
   return (
     <Container size="lg">
