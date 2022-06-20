@@ -15,6 +15,7 @@ export const getMovies = async (query: string) => {
           language,
           query,
           api_key: process.env.REACT_APP_API_KEY,
+          include_adult: false,
         },
       }
     );
