@@ -67,6 +67,9 @@ export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
         <Box p="sm">
           <Box>
             <Title order={2}>{movie.title}</Title>
+            {movie.original_language !== language && (
+              <Title order={3}>Original title: {movie.original_title}</Title>
+            )}
             <Center>
               <RingProgress
                 size={100}
