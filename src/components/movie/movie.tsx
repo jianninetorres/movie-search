@@ -1,4 +1,4 @@
-import { Card, Image, SimpleGrid, Text } from "@mantine/core";
+import { Card, Image, RingProgress, SimpleGrid, Text } from "@mantine/core";
 import defaultImage from "../../assets/themoviedb.jpeg";
 
 export interface MovieProps {
@@ -22,6 +22,16 @@ export interface Movies {
   movies: MovieProps[];
   language: string;
 }
+
+const userScoreColour = (score: number): string => {
+  if (score < 4.0) {
+    return "#d62929";
+  } else if (score < 7.0) {
+    return "#f5e642";
+  } else {
+    return "#12b886";
+  }
+};
 
 export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
   const list = movies.map((movie) => {
@@ -54,6 +64,24 @@ export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
           <Text color="grey">Release date: {movie.release_date}</Text>
         )}
         <Text>{movie.overview}</Text>
+        <RingProgress
+          sections={[
+            {
+              value: movie.vote_average * 10,
+              color: userScoreColour(movie.vote_average),
+            },
+          ]}
+          label={
+            <Text
+              color={userScoreColour(movie.vote_average)}
+              weight={700}
+              align="center"
+              size="xl"
+            >
+              {movie.vote_average * 10} %
+            </Text>
+          }
+        />
       </Card>
     );
   });
