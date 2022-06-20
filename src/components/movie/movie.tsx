@@ -26,7 +26,7 @@ export interface Movies {
 export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
   const list = movies.map((movie) => {
     return (
-      <Card key={movie.id} shadow="sm" p="lg">
+      <Card key={movie.id} shadow="md" p="lg">
         <Card.Section>
           <Image
             src={
@@ -43,7 +43,7 @@ export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
         {movie.original_language !== language && (
           <h3>Original title: {movie.original_title}</h3>
         )}
-        {movie.release_date && <p>{movie.release_date}</p>}
+        {movie.release_date && <p>Release date: {movie.release_date}</p>}
         <p>{movie.overview}</p>
       </Card>
     );
