@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import action from "./action/themoviedb";
 import { ListMovies, MovieProps } from "./components/movie/movie";
 import { Search } from "./components/search/search";
-import { Container } from "@mantine/core";
-import { Pagination } from "@mantine/core";
+import { Box, Container, Pagination } from "@mantine/core";
 
 const App = () => {
   const [movies, setMovies] = useState<MovieProps[]>([]);
@@ -53,11 +52,15 @@ const App = () => {
         </header>
         <Search query={query} onChange={handleQueryChange} />
         <ListMovies movies={movies} language={language} />
-        <Pagination
-          page={currentPage}
-          onChange={setCurrentPage}
-          total={totalPages}
-        />
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Pagination
+            page={currentPage}
+            onChange={setCurrentPage}
+            total={totalPages}
+            withEdges
+            py="md"
+          />
+        </Box>
       </div>
     </Container>
   );
