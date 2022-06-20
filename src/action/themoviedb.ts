@@ -1,7 +1,7 @@
 import * as api from "../api/themoviedb";
 
-const getMovies = (query: string) => {
-  return api.getMovies(query);
+const getMovies = (query: string, page: number) => {
+  return api.getMovies(query, page);
 };
 
 const actions = {

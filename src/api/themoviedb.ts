@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/search",
 });
 
-export const getMovies = async (query: string) => {
+export const getMovies = async (query: string, page: number) => {
   try {
     const results = await api.get(
       `https://api.themoviedb.org/3/search/movie?`,
@@ -16,6 +16,7 @@ export const getMovies = async (query: string) => {
           query,
           api_key: process.env.REACT_APP_API_KEY,
           include_adult: false,
+          page,
         },
       }
     );
