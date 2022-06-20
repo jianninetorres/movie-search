@@ -7,7 +7,7 @@ interface SearchProps {
 
 export const Search = ({ query, onChange }: SearchProps) => {
   return (
-    <Container p="md" px="0">
+    <Container p="md" px="0" size="lg">
       <TextInput
         placeholder="Search"
         label="Movie search"

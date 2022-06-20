@@ -1,4 +1,13 @@
-import { Card, Image, RingProgress, SimpleGrid, Text } from "@mantine/core";
+import {
+  Box,
+  Card,
+  Center,
+  Image,
+  RingProgress,
+  SimpleGrid,
+  Text,
+  Title,
+} from "@mantine/core";
 import defaultImage from "../../assets/themoviedb.jpeg";
 
 export interface MovieProps {
@@ -55,33 +64,40 @@ export const ListMovies = ({ movies, language }: Movies): JSX.Element => {
             alt={movie.title}
           />
         </Card.Section>
+        <Box p="sm">
+          <Box>
+            <Title order={2}>{movie.title}</Title>
+            <Center>
+              <RingProgress
+                size={100}
+                sections={[
+                  {
+                    value: movie.vote_average * 10,
+                    color: userScoreColour(movie.vote_average),
+                  },
+                ]}
+                label={
+                  <Text
+                    color={userScoreColour(movie.vote_average)}
+                    weight={700}
+                    align="center"
+                    size="sm"
+                  >
+                    {movie.vote_average * 10} %
+                  </Text>
+                }
+              />
+              <Text size="sm">User score</Text>
+            </Center>
+          </Box>
 
-        <h2>{movie.title}</h2>
-        {movie.original_language !== language && (
-          <h3>Original title: {movie.original_title}</h3>
-        )}
-        {movie.release_date && (
-          <Text color="grey">Release date: {movie.release_date}</Text>
-        )}
-        <Text>{movie.overview}</Text>
-        <RingProgress
-          sections={[
-            {
-              value: movie.vote_average * 10,
-              color: userScoreColour(movie.vote_average),
-            },
-          ]}
-          label={
-            <Text
-              color={userScoreColour(movie.vote_average)}
-              weight={700}
-              align="center"
-              size="xl"
-            >
-              {movie.vote_average * 10} %
+          {movie.release_date && (
+            <Text color="grey" py="sm">
+              Release date: {movie.release_date}
             </Text>
-          }
-        />
+          )}
+          <Text>{movie.overview}</Text>
+        </Box>
       </Card>
     );
   });

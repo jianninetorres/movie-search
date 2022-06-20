@@ -37,7 +37,7 @@ const App = () => {
   }, [query]);
 
   return (
-    <Container>
+    <Container size="lg">
       <div className="App">
         <header className="App-header">
           <h1>Movie Search</h1>
