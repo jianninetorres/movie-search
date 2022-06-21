@@ -1,6 +1,7 @@
 # Movie Search
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="836" alt="Screen Shot 2022-06-21 at 6 59 58 PM" src="https://user-images.githubusercontent.com/13004645/174910464-cc850594-a98d-4f99-8c3b-bc14571a749b.png">
 
 ## Available Scripts
 
