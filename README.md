@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Open your terminal and then type `git clone https://github.com/jianninetorres/movie-search`
+Open your terminal and then type `git clone git@github.com:jianninetorres/movie-search.git`
 
 Type `cd movie-search`
 
