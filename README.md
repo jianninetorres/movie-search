@@ -5,11 +5,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Open your terminal and then type. `git clone {the url to the GitHub repo}` This clones the repo.
+Open your terminal and then type `git clone https://github.com/jianninetorres/movie-search`
 
-`cd` into the new folder and type. `npm install`. This installs the required dependencies.
+Type `cd movie-search`
 
 In the project directory, you can run:
+
+### `yarn install`
 
 ### `yarn start`
 
