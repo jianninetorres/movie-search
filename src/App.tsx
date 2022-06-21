@@ -40,6 +40,7 @@ const App = () => {
   }, [currentPage]);
 
   useEffect(() => {
+    // consider debounce
     setCurrentPage(1);
     getMovies(currentPage);
   }, [query]);

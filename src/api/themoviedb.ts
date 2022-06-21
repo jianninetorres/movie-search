@@ -7,6 +7,10 @@ const api = axios.create({
 });
 
 export const getMovies = async (query: string, page: number) => {
+  if (!query) {
+    return;
+  }
+
   try {
     const results = await api.get(
       `https://api.themoviedb.org/3/search/movie?`,
